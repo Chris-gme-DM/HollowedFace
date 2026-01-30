@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class MenuUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+  public void OnClickRestart()
     {
-        
+        // Call the GameManager
+        // Reset the game
+        // Start the Game
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  public void OnClickQuit()
+  {
+    Application.Quit();
+  } 
 }
