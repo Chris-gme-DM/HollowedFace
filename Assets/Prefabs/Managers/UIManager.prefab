@@ -44,3 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9009c679e07b349a6cacfd79751cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  panels:
+  - Type: 1
+    PanelObject: {fileID: 0}
+  - Type: 4
+    PanelObject: {fileID: 0}
+  - Type: 2
+    PanelObject: {fileID: 0}
+  - Type: 3
+    PanelObject: {fileID: 0}
+  - Type: 5
+    PanelObject: {fileID: 0}
