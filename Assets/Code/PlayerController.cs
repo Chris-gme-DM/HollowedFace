@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private int _currentMaskIndex;
     private InputSystem_Actions _input;
     private InputActionMap _map;
+    private BaseInteractable _interactable;
     #endregion
     #region Initialization
     private void Awake()
@@ -38,15 +40,27 @@ public class PlayerController : MonoBehaviour
   #region InputHandlers
   private void OnInteract(InputAction.CallbackContext ctx)
     {
+        // move to the object
         // erkenne das Interactable auf das der Mauszeiger gerichtet ist.
+        if (_interactable != null) _interactable.OnInteract();
+       
         // Rufe die Interact method des objects auf
+
         // Das object regelt den rest
     }
     private void OnPoint(InputAction.CallbackContext ctx)
     {
         // read the screenpoint to world position indem du einen raycast auf die mouse position werfen lässt
+                Ray ray = Camera.main.ScreenPointToRay(ctx.ReadValue<Vector2>());
+                RaycastHit hit;
         // lies den value des mauszeigers aus
-        // wenn es ein interactable erkennt soll es den namen des objects auslesen und als kleine box neben der maus anzeigen lassen
+            if (Physics.Raycast(ray, out hit))
+            {
+                BaseInteractable objectHit = hit.collider.GetComponent<BaseInteractable>();
+                _interactable = objectHit;
+            Debug.Log($"{objectHit}");
+            }
+
     }
     private void OnMove(InputAction.CallbackContext ctx)
     {

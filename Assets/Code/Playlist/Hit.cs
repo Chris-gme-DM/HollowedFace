@@ -9,11 +9,4 @@ public class Hit : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            audioSource.Play();
-        }
-    }
 }

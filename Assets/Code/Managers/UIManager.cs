@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// watch this Method for changes in interaction system
     /// </summary>
-  private void HandleInteraction()
+  private void HandleInteraction(InteractionType type)
     {
         // if the interaction validates showing the Dialogue
         SetUIStatus(PanelType.Dialogue);
