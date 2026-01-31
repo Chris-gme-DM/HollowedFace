@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BaseInteractable : MonoBehaviour, IInteractable
+public abstract class BaseInteractable : MonoBehaviour
 {
   [SerializeField] private string objectName;
   [SerializeField] private MaskType requiredMask;
@@ -10,7 +10,8 @@ public abstract class BaseInteractable : MonoBehaviour, IInteractable
 
   public MaskType MaskType => requiredMask;
 
-  public virtual void Interact(InteractionType interactionType)
+  
+  public virtual void OnInteract(InteractionType interactionType)
   {
     switch (interactionType)
     {
@@ -27,7 +28,7 @@ public abstract class BaseInteractable : MonoBehaviour, IInteractable
         break;
     }
     if (interactionType != InteractionType.None) SatelliteDish.Interaction.Invoke(interactionType);
-    OnObjectInteracted();
+    OnObjectInteraction();
   }
-  protected abstract void OnObjectInteracted();
+  public abstract void OnObjectInteraction();
 }

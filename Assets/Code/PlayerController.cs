@@ -38,14 +38,22 @@ public class PlayerController : MonoBehaviour
   #region InputHandlers
   private void OnInteract(InputAction.CallbackContext ctx)
     {
-        
+        // erkenne das Interactable auf das der Mauszeiger gerichtet ist.
+        // Rufe die Interact method des objects auf
+        // Das object regelt den rest
     }
     private void OnPoint(InputAction.CallbackContext ctx)
     {
+        // read the screenpoint to world position indem du einen raycast auf die mouse position werfen lässt
+        // lies den value des mauszeigers aus
+        // wenn es ein interactable erkennt soll es den namen des objects auslesen und als kleine box neben der maus anzeigen lassen
     }
     private void OnMove(InputAction.CallbackContext ctx)
     {
-        
+        // lies den input der mouse position undprojektire sie auf den walkway der unter dem player liegt.
+        // entwickle hierzu ein kreuzprodukt zwischen dem mouse ray und einem fiktiven ray zu der mask die wir für den walkway brauchen aus
+        // bedenke hierbei dass die level ein objekt als walkway brauchen und dass du custom layer hinzufügen kannst die dann mit ihrem entsprechendden type ansprechbar sind.
+        // du findest es schon raus chakka
     }
     private void OnMask(InputAction.CallbackContext ctx)
     {
