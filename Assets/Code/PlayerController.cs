@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
     }
     private void OnPoint(InputAction.CallbackContext ctx)
     {
-        
     }
     private void OnMove(InputAction.CallbackContext ctx)
     {
@@ -77,5 +76,6 @@ public struct MaskSetting{
     public MaskType type;
     public int energyDrain;
     // Extend upon clearance how mask is shown in UI
+    public Sprite sprite;
 }
 #endregion

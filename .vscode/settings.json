@@ -67,5 +67,7 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "HollowedFace.slnx"
+    "dotnet.defaultSolution": "HollowedFace.slnx",
+    "editor.tabSize": 2,
+    "editor.autoIndent": "brackets"
 }
