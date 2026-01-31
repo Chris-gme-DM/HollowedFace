@@ -1,19 +1,27 @@
+using System;
 using UnityEngine;
 
 public abstract class BaseInteractable : MonoBehaviour
 {
   [SerializeField] private string objectName;
-  [SerializeField] private MaskType requiredMask;
-  [SerializeField] private InteractionType interactionType;
+  [SerializeField] protected MaskType requiredMask;
+  [SerializeField] protected InteractionType interactionType;
   [SerializeField, TextArea] private string dialogueText;
-  public InteractionType Type => interactionType;
 
-  public MaskType MaskType => requiredMask;
-
-  
-  public virtual void OnInteract(InteractionType interactionType)
+  public void OnInteract()
   {
-    switch (interactionType)
+    InteractableData data = new()
+    {
+      Name = objectName,
+      Dialogue = dialogueText,
+      Type = interactionType,
+      Mask = requiredMask
+    };
+    OnInteraction(data);
+  }
+  public virtual void OnInteraction(InteractableData data)
+  {
+    switch (data.Type)
     {
       case InteractionType.None:
       // Play the non interact sound
@@ -27,8 +35,16 @@ public abstract class BaseInteractable : MonoBehaviour
         // Whatever the Item does
         break;
     }
-    if (interactionType != InteractionType.None) SatelliteDish.Interaction.Invoke(interactionType);
+    SatelliteDish.Interaction.Invoke(data); 
     OnObjectInteraction();
   }
   public abstract void OnObjectInteraction();
+} 
+[Serializable]
+public struct InteractableData
+{
+  public string Name;
+  public string Dialogue;
+  public InteractionType Type;
+  public MaskType Mask;
 }

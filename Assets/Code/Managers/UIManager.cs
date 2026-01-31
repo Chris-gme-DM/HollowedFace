@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 /// <remarks>
 ///     <para>
 ///         Author: Christof Kloninger <a href = "mailto: gme.24.kloninger@gmail.com>
@@ -17,6 +18,9 @@ public class UIManager : MonoBehaviour
     private static UIManager _instance;
     #region Unity Editor
     [SerializeField] private List<PanelData> panels;
+		private TMP_Text nameDisplay;
+		private TMP_Text dialogueText;
+		private Vector2 nameTagOffset = new(0,30);
   #endregion
 
   #region MonoBehaviour
@@ -29,6 +33,12 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
   }
+  private void Update()
+  {
+    if(nameDisplay.gameObject.activeSelf) nameDisplay.transform.position = Input.mousePosition + (Vector3)nameTagOffset;
+		else nameDisplay.gameObject.SetActive(false);
+  }
+  #region Subscriptions
   private void OnEnable()
   {
     SatelliteDish.GameStatusChange.AddListener(HandleStatusChange);
@@ -41,64 +51,73 @@ public class UIManager : MonoBehaviour
     SatelliteDish.SceneStatusChange.RemoveListener(HandleSceneStatusChange);
     SatelliteDish.Interaction.RemoveListener(HandleInteraction);
   }
+	#endregion
+	#region Handlers
   private void HandleStatusChange(GameStatus status)
     {
-        switch ( status )
-        {
-            case GameStatus.Gameplay:
-                SetUIStatus(PanelType.HUD);
-                break;
-            case GameStatus.Paused:
-                SetUIStatus(PanelType.Menu);
-                break;
-            case GameStatus.GameOver:
-                SetUIStatus(PanelType.None);
-                break;
-        }
+			switch ( status )
+			{
+				case GameStatus.Gameplay:
+					SetUIStatus(PanelType.HUD);
+					break;
+				case GameStatus.Paused:
+					SetUIStatus(PanelType.Menu);
+					break;
+				case GameStatus.GameOver:
+					SetUIStatus(PanelType.None);
+					break;
+			}
     }
   private void HandleSceneStatusChange(SceneStatus prev, SceneStatus next)
-    {
-        if ( prev == next) return;
+	{
+		if ( prev == next) return;
 
-        switch ( next )
-        {
-            case SceneStatus.Invalid:
-                SetUIStatus(PanelType.None);
-                break;
-            case SceneStatus.Loading:
-                SetUIStatus(PanelType.Loading);
-                break;
-            case SceneStatus.Running:
-                HandleStatusChange(GameStatus.Gameplay);
-                break;
-        }
-    }
+		switch ( next )
+		{
+			case SceneStatus.Invalid:
+				SetUIStatus(PanelType.None);
+				break;
+			case SceneStatus.Loading:
+				SetUIStatus(PanelType.Loading);
+				break;
+			case SceneStatus.Running:
+				HandleStatusChange(GameStatus.Gameplay);
+				break;
+		}
+	}
     /// <summary>
     /// watch this Method for changes in interaction system
     /// </summary>
-  private void HandleInteraction()
+  private void HandleInteraction(InteractableData data)
     {
-        // if the interaction validates showing the Dialogue
-        SetUIStatus(PanelType.Dialogue);
+			nameDisplay.text = data.Name;
+			if(data.Type != InteractionType.Dialogue) return;
+			// if the interaction validates showing the Dialogue
+			dialogueText.text = data.Dialogue;
+			SetUIStatus(PanelType.Dialogue);
     }
+		#endregion
+		#region Helpers
   public void SetUIStatus(params PanelType[] panelToShow)
     {
-        foreach ( var p in panels )
-        {
-            bool match = false;
-            foreach (var t in panelToShow)
-            {
-                if(p.Type == t)
-                {
-                    match = true;
-                    break;
-                }
-            }
-            p.PanelObject.SetActive(match);
-            // Will probably extend functions here upon loading.
-            // Cerate an Enumerator for the Loading screen or Make a separate function
-        }
+			foreach ( var p in panels )
+			{
+				bool match = false;
+				foreach (var t in panelToShow)
+				{
+					if(p.Type == t)
+					{
+						match = true;
+						break;
+					}
+				}
+				p.PanelObject.SetActive(match);
+				// Will probably extend functions here upon loading.
+				// Cerate an Enumerator for the Loading screen or Make a separate function
+			}
     }
+
+		#endregion
     #endregion
     #region Serializables
     public enum PanelType
