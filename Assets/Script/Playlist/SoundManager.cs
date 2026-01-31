@@ -33,9 +33,14 @@ public class SoundManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public static void PlaySound(Soundtype sound, float volume = 1 )
+    public static void PlaySound(Soundtype sound, float volume = 1)
     {
+        AudioClip[] clips = instance.soundlist[(int)sound].Sounds;
+        AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
+        instance.audioSource.PlayOneShot(randomClip, volume);
+
        // instance.audioSource.PlayOneShot(instance.soundlist[(int)sound], volume);
+
     }
 
 #if Unity_Editor
@@ -59,6 +64,7 @@ public class SoundManager : MonoBehaviour
 [Serializable]
 public struct Soundlist 
 {
+    public AudioClip[] Sounds { get => Sounds; }
     [HideInInspector] public string name;
     [SerializeField] private AudioClip[] sounds;
 }
