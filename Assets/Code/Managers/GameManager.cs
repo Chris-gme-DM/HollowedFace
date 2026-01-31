@@ -13,14 +13,21 @@ public class GameManager : MonoBehaviour
   private float _timer;
   private int _currentEnergy;
   private int _level;
+  private InputSystem_Actions _input;
   void Awake()
   {
     if ( _instance != null)
     {
         if (_instance != this) Destroy(gameObject);
-        _instance = this;
+        if(_instance == null) _instance = this;
         DontDestroyOnLoad(this);
     }
+    _input = new();
+  }
+  private void Start()
+  {
+    SetGameState(GameStatus.Paused);
+    TogglePause();
   }
   void Update()
     {
@@ -39,6 +46,7 @@ public class GameManager : MonoBehaviour
         if (next == CurrentStatus) return;
         CurrentStatus = next;
         SatelliteDish.GameStatusChange.Invoke(next);
+        Debug.Log($"GameState changed to: {next}");
     }
   public void RestartGame()
     {
@@ -60,7 +68,16 @@ public class GameManager : MonoBehaviour
     }
     public void TogglePause()
     { 
-        Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+        if (Time.timeScale > 0)
+        {
+            Time.timeScale = 0;
+            _input.PointAndClick.Disable();
+        } 
+        else
+        {
+            Time.timeScale = 1;
+            _input.PointAndClick.Enable();
+        }
         GameStatus newStatus = (Time.timeScale == 0) ? GameStatus.Paused : GameStatus.Gameplay;
         SetGameState(newStatus);
     }

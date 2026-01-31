@@ -18,8 +18,8 @@ public class UIManager : MonoBehaviour
     private static UIManager _instance;
     #region Unity Editor
     [SerializeField] private List<PanelData> panels;
-		private TMP_Text nameDisplay;
-		private TMP_Text dialogueText;
+		[SerializeField] private TMP_Text nameDisplay;
+		[SerializeField] private TMP_Text dialogueText;
 		private Vector2 nameTagOffset = new(0,30);
   #endregion
 
@@ -28,15 +28,10 @@ public class UIManager : MonoBehaviour
   {
     if ( _instance != null && _instance != this )
     {
-        if( _instance != this) Destroy(this);
-        _instance = this;
-        DontDestroyOnLoad(this);
+			if( _instance != this) Destroy(this);
+			_instance = this;
+			DontDestroyOnLoad(this);
     }
-  }
-  private void Update()
-  {
-    if(nameDisplay.gameObject.activeSelf) nameDisplay.transform.position = Input.mousePosition + (Vector3)nameTagOffset;
-		else nameDisplay.gameObject.SetActive(false);
   }
   #region Subscriptions
   private void OnEnable()
@@ -44,12 +39,14 @@ public class UIManager : MonoBehaviour
     SatelliteDish.GameStatusChange.AddListener(HandleStatusChange);
     SatelliteDish.SceneStatusChange.AddListener(HandleSceneStatusChange);
     SatelliteDish.Interaction.AddListener(HandleInteraction);
+		SatelliteDish.PointerMoved.AddListener(HandlePointerMove);
   }
   private void OnDisable()
   {
     SatelliteDish.GameStatusChange.RemoveListener(HandleStatusChange);
     SatelliteDish.SceneStatusChange.RemoveListener(HandleSceneStatusChange);
     SatelliteDish.Interaction.RemoveListener(HandleInteraction);
+		SatelliteDish.PointerMoved.AddListener(HandlePointerMove);
   }
 	#endregion
 	#region Handlers
@@ -96,6 +93,11 @@ public class UIManager : MonoBehaviour
 			dialogueText.text = data.Dialogue;
 			SetUIStatus(PanelType.Dialogue);
     }
+	private void HandlePointerMove(Vector2 pointer)
+	{
+	  if(nameDisplay.gameObject.activeSelf) nameDisplay.transform.position = pointer + nameTagOffset;
+		else nameDisplay.gameObject.SetActive(false);
+	}
 		#endregion
 		#region Helpers
   public void SetUIStatus(params PanelType[] panelToShow)

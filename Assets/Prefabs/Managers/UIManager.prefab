@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2925879763113274445
 Transform:
@@ -55,3 +55,5 @@ MonoBehaviour:
     PanelObject: {fileID: 0}
   - Type: 5
     PanelObject: {fileID: 0}
+  nameDisplay: {fileID: 0}
+  dialogueText: {fileID: 0}
