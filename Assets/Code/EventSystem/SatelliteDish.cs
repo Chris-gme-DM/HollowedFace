@@ -52,7 +52,7 @@ public class SatelliteDish : MonoBehaviour
 
 #region Invokables: GameEvents
   public static UnityEvent<GameStatus> GameStatusChange => _instance.gameContextEvents.gameStatusChange ;
-  public static UnityEvent<InteractionType> Interaction => _instance.gameContextEvents.interaction;
+  public static UnityEvent<InteractableData> Interaction => _instance.gameContextEvents.interaction;
   public static UnityEvent<int> EnergyEffect => _instance.gameContextEvents.energyEffect;
   public static UnityEvent<MaskSetting> MaskChange => _instance.gameContextEvents.maskChange;
   public static UnityEvent<int> TimePass => _instance.gameContextEvents.timePassed;
@@ -81,7 +81,7 @@ private class SceneContextEvents {
 private class GameContextEvents
   {
     [SerializeField] public UnityEvent<GameStatus> gameStatusChange = new() ;
-    [SerializeField] public UnityEvent<InteractionType> interaction = new() ;
+    [SerializeField] public UnityEvent<InteractableData> interaction = new() ;
     [SerializeField] public UnityEvent<int> energyEffect = new() ;
     [SerializeField] public UnityEvent<int> timePassed = new() ;
     [SerializeField] public UnityEvent<MaskSetting> maskChange = new() ;
