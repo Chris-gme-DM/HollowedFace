@@ -20,12 +20,15 @@ public class SatelliteDish : MonoBehaviour
 {
 #region Singleton
   private static SatelliteDish _instance ;
+
+  public GameStatus CurrentGameStatus {get; private set;}
 #endregion
 
 
 #region Unity Editor
   [SerializeField] private EventSystemConfig config ;
   [SerializeField] private SceneContextEvents sceneContextEvents ;
+  [SerializeField] private GameContextEvents gameContextEvents;
 #endregion
 
 
@@ -47,7 +50,13 @@ public class SatelliteDish : MonoBehaviour
   public static UnityEvent<SceneStatus,SceneStatus> SceneStatusChange => _instance.sceneContextEvents.sceneStatusChange ;
 #endregion
 
-
+#region Invokables: GameEvents
+  public static UnityEvent<GameStatus> GameStatusChange => _instance.gameContextEvents.gameStatusChange ;
+  public static UnityEvent Interaction => _instance.gameContextEvents.interaction;
+  public static UnityEvent<int> EnergyEffect => _instance.gameContextEvents.energyEffect;
+  public static UnityEvent<MaskSetting> MaskChange => _instance.gameContextEvents.maskChange;
+  public static UnityEvent<int> TimePass => _instance.gameContextEvents.timePassed;
+#endregion
 #region MonoBehavior
 private void Awake()
 {
@@ -68,10 +77,20 @@ private void Awake()
 private class SceneContextEvents {
 [SerializeField] public UnityEvent<SceneStatus,SceneStatus> sceneStatusChange ;
 }
+[Serializable]
+private class GameContextEvents
+  {
+    [SerializeField] public UnityEvent<GameStatus> gameStatusChange = new() ;
+    [SerializeField] public UnityEvent interaction = new() ;
+    [SerializeField] public UnityEvent<int> energyEffect = new() ;
+    [SerializeField] public UnityEvent<int> timePassed = new() ;
+    [SerializeField] public UnityEvent<MaskSetting> maskChange = new() ;
+  }
 
 [Serializable]
 private class EventSystemConfig {
 [SerializeField] public string helloWorld = "hello world" ;
 }
-#endregion
+
 }
+#endregion

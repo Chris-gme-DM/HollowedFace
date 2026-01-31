@@ -29,15 +29,72 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
   }
-  public void TogglePanel(PanelType type)
+  private void OnEnable()
+  {
+    SatelliteDish.GameStatusChange.AddListener(HandleStatusChange);
+    SatelliteDish.SceneStatusChange.AddListener(HandleSceneStatusChange);
+    SatelliteDish.Interaction.AddListener(HandleInteraction);
+  }
+  private void OnDisable()
+  {
+    SatelliteDish.GameStatusChange.RemoveListener(HandleStatusChange);
+    SatelliteDish.SceneStatusChange.RemoveListener(HandleSceneStatusChange);
+    SatelliteDish.Interaction.RemoveListener(HandleInteraction);
+  }
+  private void HandleStatusChange(GameStatus status)
+    {
+        switch ( status )
+        {
+            case GameStatus.Gameplay:
+                SetUIStatus(PanelType.HUD);
+                break;
+            case GameStatus.Paused:
+                SetUIStatus(PanelType.Menu);
+                break;
+            case GameStatus.GameOver:
+                SetUIStatus(PanelType.None);
+                break;
+        }
+    }
+  private void HandleSceneStatusChange(SceneStatus prev, SceneStatus next)
+    {
+        if ( prev == next) return;
+
+        switch ( next )
+        {
+            case SceneStatus.Invalid:
+                SetUIStatus(PanelType.None);
+                break;
+            case SceneStatus.Loading:
+                SetUIStatus(PanelType.Loading);
+                break;
+            case SceneStatus.Running:
+                HandleStatusChange(GameStatus.Gameplay);
+                break;
+        }
+    }
+    /// <summary>
+    /// watch this Method for changes in interaction system
+    /// </summary>
+  private void HandleInteraction()
+    {
+        // if the interaction validates showing the Dialogue
+        SetUIStatus(PanelType.Dialogue);
+    }
+  public void SetUIStatus(params PanelType[] panelToShow)
     {
         foreach ( var p in panels )
         {
-            if(p.Type == type)
+            bool match = false;
+            foreach (var t in panelToShow)
             {
-                bool isActive = p.PanelObject.activeSelf;
-                p.PanelObject.SetActive(!isActive);
+                if(p.Type == t)
+                {
+                    match = true;
+                    break;
+                }
             }
+            p.PanelObject.SetActive(match);
             // Will probably extend functions here upon loading.
             // Cerate an Enumerator for the Loading screen or Make a separate function
         }

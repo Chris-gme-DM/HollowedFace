@@ -1,16 +1,15 @@
 using UnityEngine;
-
+/// <summary>
+/// I will make this obsolete
+/// </summary>
 public class OptionsUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private float _masterVol;
+    private float _musicVol;
+    private float _sfxVol;
 
-    // Update is called once per frame
-    void Update()
+    public void OnEndEditMasterVol(float value)
     {
-        
+        _masterVol = value;
     }
 }
