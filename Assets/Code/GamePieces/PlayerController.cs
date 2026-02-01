@@ -136,7 +136,19 @@ public class PlayerController : MonoBehaviour
         if(scrollValue > 0) _currentMaskIndex = (_currentMaskIndex +1) % maskSettings.Count;
         else if(scrollValue < 0) _currentMaskIndex = (_currentMaskIndex - 1 + maskSettings.Count) % maskSettings.Count;
         MaskSetting activeMask = maskSettings[_currentMaskIndex];
-        // Update HeadRotation
+        // Rotate head
+        float targetY = 0;
+        switch (activeMask.type)
+        {
+            case MaskType.Happy: targetY = 90f; break;
+            case MaskType.Angry: targetY = 180f; break;
+            case MaskType.Sad: targetY = 270f; break;
+            case MaskType.Indifferent: targetY = 0f; break; 
+            default: targetY = 0f; break;
+        }
+        Transform headTransform = _maskHead.transform;
+        headTransform.localRotation = Quaternion.Euler(0, targetY, 0);
+
         SatelliteDish.MaskChange.Invoke(activeMask);
     }
     private void OnPause(InputAction.CallbackContext ctx)

@@ -67,6 +67,7 @@ MonoBehaviour:
     energyDrain: 4
     sprite: {fileID: 21300000, guid: 5fca4345bdc961049a81a4053ce321a0, type: 3}
   walkSpeed: 3
+  _maskHead: {fileID: 885024562823728125}
 --- !u!33 &4739576490118369412
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -272,6 +273,11 @@ PrefabInstance:
 --- !u!4 &505508760260366663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 313ed1639b5b24442b63c0c12577727a, type: 3}
+  m_PrefabInstance: {fileID: 38655493666223788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &885024562823728125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 313ed1639b5b24442b63c0c12577727a, type: 3}
   m_PrefabInstance: {fileID: 38655493666223788}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3518441445768855714
