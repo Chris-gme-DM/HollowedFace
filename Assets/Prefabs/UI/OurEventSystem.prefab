@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 6992092462067870567}
   - component: {fileID: 2093291507377559286}
   - component: {fileID: 2450628826970308635}
+  - component: {fileID: 3955709385809247214}
   m_Layer: 0
   m_Name: OurEventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3785549609872077143
 Transform:
@@ -114,3 +115,21 @@ MonoBehaviour:
     maskChange:
       m_PersistentCalls:
         m_Calls: []
+    pointerMoved:
+      m_PersistentCalls:
+        m_Calls: []
+    requestEnergyAdjustment:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &3955709385809247214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4306369398596020960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79cea6a95470de348866767a376feebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Persistence

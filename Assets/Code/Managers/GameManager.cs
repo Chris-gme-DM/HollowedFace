@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 /// <summary>
@@ -7,12 +8,14 @@ public class GameManager : MonoBehaviour
 {
   private static GameManager _instance;
   public GameStatus CurrentStatus {get; private set;}
+  public List<LevelData> Levels;
+  private LevelData _currentLevelData;
+  public LevelData CurrentLevelData => _currentLevelData;
   private int _currentInGameTime;
   [SerializeField] private Scene _gameOverScene;
   [SerializeField] private float _secondsForTimePass;
   private float _timer;
   private int _currentEnergy;
-  private int _level;
   private InputSystem_Actions _input;
   private MaskSetting _currentMask;
   void Awake()
@@ -33,12 +36,17 @@ public class GameManager : MonoBehaviour
     SatelliteDish.MaskChange.AddListener(HandleMaskChange);
     SatelliteDish.RequestEnergyAdjustment.AddListener(AdjustEnergy);
     SatelliteDish.SceneStatusChange.AddListener(HandleSceneChange);
+    SatelliteDish.Interaction.AddListener(Count);
+    SatelliteDish.Interaction.AddListener(CheckLevelChange);
   }
   private void OnDisable()
   {
     SatelliteDish.MaskChange.RemoveListener(HandleMaskChange);
     SatelliteDish.RequestEnergyAdjustment.RemoveListener(AdjustEnergy);
     SatelliteDish.SceneStatusChange.RemoveListener(HandleSceneChange);
+    SatelliteDish.Interaction.RemoveListener(Count);
+    SatelliteDish.Interaction.RemoveListener(CheckLevelChange);
+
   }
   void Update()
     {
@@ -67,7 +75,6 @@ public class GameManager : MonoBehaviour
     }
     private void ResetGame()
     {
-        _level = 1;
         _currentInGameTime = 480;
         SatelliteDish.TimePass.Invoke(_currentInGameTime);
         AdjustEnergy(80);
@@ -76,7 +83,7 @@ public class GameManager : MonoBehaviour
     private void ChangeScene(int index)
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (sceneIndex == _level) return;
+        if (sceneIndex == _currentLevelData.LevelIndex) return;
         SceneManager.LoadScene(index);
         SatelliteDish.SceneStatusChange.Invoke(SceneStatus.Invalid, SceneStatus.Loading);
     }
@@ -112,6 +119,22 @@ public class GameManager : MonoBehaviour
             ChangeScene(_gameOverScene.buildIndex);
             // Wait for the Scene to show GameOver, then open the Menu
             TogglePause();
+        }
+    }
+  private void Count(InteractableData data)
+  {
+    if(data.Type != InteractionType.Item) return;
+    _currentLevelData.Counter++;
+    if(_currentLevelData.Counter >= _currentLevelData.CountRequired) _currentLevelData.IsCompleted = true;
+  }
+  private void CheckLevelChange(InteractableData data)
+    {
+        if(data.Name != "GoodDoor") return;
+        if(data.Type == InteractionType.Action && data.Name == "GoodDoor")
+        {
+            _currentLevelData.Counter = 0;
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            ChangeScene(sceneIndex+1);
         }
     }
     private void HandleMaskChange(MaskSetting mask) => _currentMask = mask;
