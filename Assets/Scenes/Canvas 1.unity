@@ -520,6 +520,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: OurCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7272033270262645857, guid: a5fb5c01dad795f4ca006a0cbe4e3e34, type: 3}
+      propertyPath: m_fontSize
+      value: 34.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272033270262645857, guid: a5fb5c01dad795f4ca006a0cbe4e3e34, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8055041280524472033, guid: a5fb5c01dad795f4ca006a0cbe4e3e34, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +23,7 @@ public class HUD : MonoBehaviour
 
   private void HandleMaskChange(MaskSetting mask)
   {
-    throw new NotImplementedException();
+    _maskImage.sprite = mask.sprite;
   }
 
   private void HandleEnergyEffect(int arg0)

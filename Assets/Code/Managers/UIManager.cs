@@ -1,7 +1,8 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System;
 using TMPro;
+using System.Collections.Generic;
 /// <remarks>
 ///     <para>
 ///         Author: Christof Kloninger <a href = "mailto: gme.24.kloninger@gmail.com>
@@ -18,38 +19,36 @@ public class UIManager : MonoBehaviour
     private static UIManager _instance;
     #region Unity Editor
     [SerializeField] private List<PanelData> panels;
-		private TMP_Text nameDisplay;
-		private TMP_Text dialogueText;
+		[SerializeField] private TMP_Text nameDisplay;
+		[SerializeField] private TMP_Text dialogueText;
 		private Vector2 nameTagOffset = new(0,30);
   #endregion
 
   #region MonoBehaviour
   void Awake()
   {
-    if ( _instance != null && _instance != this )
+		if (_instance != null && _instance != this)
     {
-        if( _instance != this) Destroy(this);
-        _instance = this;
-        DontDestroyOnLoad(this);
+        Destroy(gameObject); // Kill the new one
+        return; // Stop execution here!
     }
-  }
-  private void Update()
-  {
-    if(nameDisplay.gameObject.activeSelf) nameDisplay.transform.position = Input.mousePosition + (Vector3)nameTagOffset;
-		else nameDisplay.gameObject.SetActive(false);
-  }
+    _instance = this;
+    DontDestroyOnLoad(gameObject);
+	}
   #region Subscriptions
-  private void OnEnable()
+  private void Start()
   {
     SatelliteDish.GameStatusChange.AddListener(HandleStatusChange);
     SatelliteDish.SceneStatusChange.AddListener(HandleSceneStatusChange);
     SatelliteDish.Interaction.AddListener(HandleInteraction);
+		SatelliteDish.PointerMoved.AddListener(HandlePointerMove);
   }
   private void OnDisable()
   {
     SatelliteDish.GameStatusChange.RemoveListener(HandleStatusChange);
     SatelliteDish.SceneStatusChange.RemoveListener(HandleSceneStatusChange);
     SatelliteDish.Interaction.RemoveListener(HandleInteraction);
+		SatelliteDish.PointerMoved.AddListener(HandlePointerMove);
   }
 	#endregion
 	#region Handlers
@@ -89,13 +88,28 @@ public class UIManager : MonoBehaviour
     /// watch this Method for changes in interaction system
     /// </summary>
   private void HandleInteraction(InteractableData data)
-    {
-			nameDisplay.text = data.Name;
-			if(data.Type != InteractionType.Dialogue) return;
-			// if the interaction validates showing the Dialogue
-			dialogueText.text = data.Dialogue;
-			SetUIStatus(PanelType.Dialogue);
-    }
+	{
+		if (data.Type == InteractionType.None || string.IsNullOrEmpty(data.Name))
+		{
+			nameDisplay.text = "";
+			SetUIStatus(PanelType.HUD); 
+			return;
+		}
+		nameDisplay.text = data.Name;
+		if (string.IsNullOrEmpty(data.Dialogue) || data.Dialogue.Length <= 1)
+		{
+			SetUIStatus(PanelType.HUD); 
+			return;
+		}
+
+		dialogueText.text = data.Dialogue;
+		SetUIStatus(PanelType.Dialogue, PanelType.HUD);    
+	}
+	private void HandlePointerMove(Vector2 pointer)
+	{
+	  if(nameDisplay.gameObject.activeSelf) nameDisplay.gameObject.transform.position = pointer + nameTagOffset;
+		else nameDisplay.gameObject.SetActive(false);
+	}
 		#endregion
 		#region Helpers
   public void SetUIStatus(params PanelType[] panelToShow)
@@ -116,7 +130,16 @@ public class UIManager : MonoBehaviour
 				// Cerate an Enumerator for the Loading screen or Make a separate function
 			}
     }
-
+	public void TriggerLoadingScreen()
+	{
+		StartCoroutine(LoadingSequence());
+	}
+	private IEnumerator LoadingSequence()
+	{
+		SetUIStatus(PanelType.Loading);
+		yield return new WaitForSecondsRealtime(5f);
+		SatelliteDish.SceneStatusChange.Invoke(SceneStatus.Loading, SceneStatus.Running);
+	}
 		#endregion
     #endregion
     #region Serializables

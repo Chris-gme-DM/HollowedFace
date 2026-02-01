@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5661829892761670415}
   - component: {fileID: 5540796619609771313}
+  - component: {fileID: 5164202788949348780}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5661829892761670415
 Transform:
@@ -44,5 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a69af79e29e36d48aedfee8615aca7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  Levels:
+  - {fileID: 11400000, guid: 8a2b23866781e3b42ab0e9237933fc6b, type: 2}
+  - {fileID: 11400000, guid: c0c2b2c594fd9fc48a202347090281ca, type: 2}
+  - {fileID: 11400000, guid: 3b9d6bee1376ecb4eba422b3e47342d5, type: 2}
+  - {fileID: 11400000, guid: 24ba14e6d568fc8478cc8e9a77eb653c, type: 2}
+  - {fileID: 11400000, guid: ad2edfa94f5972b4398be0faf4baf0d8, type: 2}
+  - {fileID: 11400000, guid: 5553dda778212b14089a5029c6a146d7, type: 2}
   _gameOverScene: {}
   _secondsForTimePass: 60
+--- !u!114 &5164202788949348780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207111828641923885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79cea6a95470de348866767a376feebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Persistence
