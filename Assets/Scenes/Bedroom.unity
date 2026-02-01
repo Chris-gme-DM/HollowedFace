@@ -119,6 +119,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &11679840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482259485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e7cb0d3c34c9d4e8f60bf6c6bd7c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Actionable
+  objectName: Nightdrawer
+  requiredMask: 2
+  interactionType: 2
+  dialogueText: Damn! The meds are gone
 --- !u!1 &378498466
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +246,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &386895947
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5615436359389484405, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_Name
+      value: GoodDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.527
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.415
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744717432264089253, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 975da6d2debad6f4b889a03412098a37, type: 3}
 --- !u!1 &503405760
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,12 +605,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8834936616722377984, guid: 58ee7edf84bd6974b94a882b2f3b8a70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1482259490}
+    - targetCorrespondingSourceObject: {fileID: 827192026055665628, guid: 58ee7edf84bd6974b94a882b2f3b8a70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1482259493}
     - targetCorrespondingSourceObject: {fileID: 3187462833287439617, guid: 58ee7edf84bd6974b94a882b2f3b8a70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1482259489}
     - targetCorrespondingSourceObject: {fileID: 3720678389879875357, guid: 58ee7edf84bd6974b94a882b2f3b8a70, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1482259488}
+      addedObject: {fileID: 11679840}
+    - targetCorrespondingSourceObject: {fileID: -4432339207016849097, guid: 58ee7edf84bd6974b94a882b2f3b8a70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1482259492}
   m_SourcePrefab: {fileID: 100100000, guid: 58ee7edf84bd6974b94a882b2f3b8a70, type: 3}
 --- !u!1 &1482259485 stripped
 GameObject:
@@ -554,22 +633,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -8834936616722377984, guid: 58ee7edf84bd6974b94a882b2f3b8a70, type: 3}
   m_PrefabInstance: {fileID: 1482259484}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1482259488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!1 &1482259488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4432339207016849097, guid: 58ee7edf84bd6974b94a882b2f3b8a70, type: 3}
+  m_PrefabInstance: {fileID: 1482259484}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482259485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7580bb5ed485cd24686123d693cb06b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Countable
-  objectName: NightDrawer
-  requiredMask: 0
-  interactionType: 1
-  dialogueText: useful stuff
 --- !u!114 &1482259489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,13 +647,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1482259486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7580bb5ed485cd24686123d693cb06b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 20e7cb0d3c34c9d4e8f60bf6c6bd7c47, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Countable
-  objectName: Drawer
-  requiredMask: 4
-  interactionType: 3
-  dialogueText: all the same grey clothes
+  m_EditorClassIdentifier: Assembly-CSharp::Actionable
+  objectName: 
+  requiredMask: 3
+  interactionType: 1
+  dialogueText: Same grey clothes as every day
 --- !u!114 &1482259490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,13 +663,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 1482259487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7580bb5ed485cd24686123d693cb06b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 20e7cb0d3c34c9d4e8f60bf6c6bd7c47, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Countable
+  m_EditorClassIdentifier: Assembly-CSharp::Actionable
   objectName: Bed
   requiredMask: 1
   interactionType: 1
-  dialogueText: SLEEP
+  dialogueText: Sleep. Sweet Sleep. How i creave for it
+--- !u!1 &1482259491 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 827192026055665628, guid: 58ee7edf84bd6974b94a882b2f3b8a70, type: 3}
+  m_PrefabInstance: {fileID: 1482259484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1482259492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482259488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a2dcfe441224f4fbd427f03e66a21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UselessItem
+  objectName: blah
+  requiredMask: 2
+  interactionType: 2
+  dialogueText: Bah. All that light. Keep those closed
+--- !u!114 &1482259493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482259491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e7cb0d3c34c9d4e8f60bf6c6bd7c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Actionable
+  objectName: Books
+  requiredMask: 3
+  interactionType: 2
+  dialogueText: So many books to read, and not enough time
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -609,3 +714,4 @@ SceneRoots:
   - {fileID: 503405762}
   - {fileID: 1482259484}
   - {fileID: 378498470}
+  - {fileID: 386895947}
