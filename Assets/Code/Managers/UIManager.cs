@@ -1,7 +1,8 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System;
 using TMPro;
+using System.Collections.Generic;
 /// <remarks>
 ///     <para>
 ///         Author: Christof Kloninger <a href = "mailto: gme.24.kloninger@gmail.com>
@@ -26,13 +27,14 @@ public class UIManager : MonoBehaviour
   #region MonoBehaviour
   void Awake()
   {
-    if ( _instance != null && _instance != this )
+		if (_instance != null && _instance != this)
     {
-			if( _instance != this) Destroy(this);
-			if(_instance == null) _instance = this;
-			DontDestroyOnLoad(this);
+        Destroy(gameObject); // Kill the new one
+        return; // Stop execution here!
     }
-  }
+    _instance = this;
+    DontDestroyOnLoad(gameObject);
+	}
   #region Subscriptions
   private void Start()
   {
@@ -40,7 +42,6 @@ public class UIManager : MonoBehaviour
     SatelliteDish.SceneStatusChange.AddListener(HandleSceneStatusChange);
     SatelliteDish.Interaction.AddListener(HandleInteraction);
 		SatelliteDish.PointerMoved.AddListener(HandlePointerMove);
-    
   }
   private void OnDisable()
   {
@@ -129,7 +130,16 @@ public class UIManager : MonoBehaviour
 				// Cerate an Enumerator for the Loading screen or Make a separate function
 			}
     }
-
+	public void TriggerLoadingScreen()
+	{
+		StartCoroutine(LoadingSequence());
+	}
+	private IEnumerator LoadingSequence()
+	{
+		SetUIStatus(PanelType.Loading);
+		yield return new WaitForSecondsRealtime(5f);
+		SatelliteDish.SceneStatusChange.Invoke(SceneStatus.Loading, SceneStatus.Running);
+	}
 		#endregion
     #endregion
     #region Serializables

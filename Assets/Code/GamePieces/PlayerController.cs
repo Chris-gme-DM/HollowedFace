@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool _isWalking;
     private Coroutine _interactionCoroutine;
     private Animator _animator;
-    private Quaternion _baseRotation = Quaternion.Euler(0, -90f, 0);
+    private Quaternion _baseRotation = Quaternion.Euler(0, 180, 0);
     private int _interactionLayer => LayerMask.GetMask("Interactable");
     #endregion
     #region Initialization
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     if (direction != Vector3.zero)
     {
         direction.y = 0; 
-        Quaternion targetRotation = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -90, 0);    // Offset for reasons
+        Quaternion targetRotation = Quaternion.LookRotation(-direction);    // Offset for reasons
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
     }
   }
@@ -93,7 +93,11 @@ public class PlayerController : MonoBehaviour
     private IEnumerator WalkAndInteract(BaseInteractable target)
     {
         MovePlayer();
-        while( Vector3.Distance(transform.position, _targetPosition) > 0.1f) yield return null;
+        while( Vector3.Distance(transform.position, _targetPosition) > 0.1f)
+        {
+            if(!_isWalking) yield break;
+            yield return null;
+        }
         _interactable.OnInteract();
         _interactionCoroutine = null;
     }
@@ -122,6 +126,7 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputAction.CallbackContext ctx)
     {
         MovePlayer();
+        Debug.Log($"MOVE");
     }
     private void OnMask(InputAction.CallbackContext ctx)
     {

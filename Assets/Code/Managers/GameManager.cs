@@ -20,24 +20,23 @@ public class GameManager : MonoBehaviour
   private MaskSetting _currentMask;
   void Awake()
   {
-    if ( _instance != null)
+    if (_instance != null && _instance != this)
     {
-        if (_instance != this) Destroy(gameObject);
-        if(_instance == null) _instance = this;
-        DontDestroyOnLoad(this);
+        Destroy(gameObject); 
+        return;
     }
+    _instance = this;
+    DontDestroyOnLoad(gameObject);
     _input = new();
   }
   private void Start()
   {
-    ResetGame();
-    SetGameState(GameStatus.Paused);
-    TogglePause();
     SatelliteDish.MaskChange.AddListener(HandleMaskChange);
     SatelliteDish.RequestEnergyAdjustment.AddListener(AdjustEnergy);
     SatelliteDish.SceneStatusChange.AddListener(HandleSceneChange);
     SatelliteDish.Interaction.AddListener(Count);
     SatelliteDish.Interaction.AddListener(CheckLevelChange);
+    ResetGame();
   }
   private void OnDisable()
   {
@@ -75,6 +74,7 @@ public class GameManager : MonoBehaviour
     }
     private void ResetGame()
     {
+        _currentLevelData = Levels[1];
         _currentInGameTime = 480;
         SatelliteDish.TimePass.Invoke(_currentInGameTime);
         AdjustEnergy(80);
@@ -86,13 +86,18 @@ public class GameManager : MonoBehaviour
         if (sceneIndex == _currentLevelData.LevelIndex) return;
         SceneManager.LoadScene(index);
         SatelliteDish.SceneStatusChange.Invoke(SceneStatus.Invalid, SceneStatus.Loading);
+
     }
     private void HandleSceneChange(SceneStatus prev, SceneStatus next)
     {
         if(prev == next) return;
         if(next == SceneStatus.Invalid) SetGameState(GameStatus.Paused);
         if(next == SceneStatus.Loading) SetGameState(GameStatus.Paused);
-        if(next == SceneStatus.Running) SetGameState(GameStatus.Gameplay);
+        if(next == SceneStatus.Running)
+        {
+            _currentInGameTime = _currentLevelData.TimeToStart;
+            SetGameState(GameStatus.Gameplay);
+        }
     }
     public void TogglePause()
     { 
