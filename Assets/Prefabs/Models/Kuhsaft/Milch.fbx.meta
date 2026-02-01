@@ -1,12 +1,17 @@
 fileFormatVersion: 2
-guid: 88e7b9a0bbcb0cb45abbf6b8406a640d
+guid: d37956557593e514db4690301caae3dc
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kuhsaft
+    second: {fileID: 2100000, guid: 4b264e36a889d854ea0b79b8fc7c5138, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 0
+    materialName: 1
     materialSearch: 1
     materialLocation: 1
   animations:
@@ -35,7 +40,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1

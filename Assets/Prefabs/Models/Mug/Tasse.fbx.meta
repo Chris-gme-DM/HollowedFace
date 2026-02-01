@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: d37956557593e514db4690301caae3dc
+guid: 88e7b9a0bbcb0cb45abbf6b8406a640d
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kaffee
+    second: {fileID: 2100000, guid: b4e160d7ee0ea96448e75cf5218c09a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tasse
+    second: {fileID: 2100000, guid: 4629633a2becfa048b78e3e39b23eef1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,7 +45,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1

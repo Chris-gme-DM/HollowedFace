@@ -3,7 +3,27 @@ guid: 08da7004ad1e3f64fbae044dc5236377
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Human_Shoes
+    second: {fileID: 2100000, guid: 16a07de4aeb43b24d8ba9486ed131148, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Human_Skin
+    second: {fileID: 2100000, guid: a76dc6bd00a785343bb5683b0dad1c98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Human_Top_3
+    second: {fileID: 2100000, guid: 0e48d0155c9fe1a48a71fc97ad87b2fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Humon_Bottom
+    second: {fileID: 2100000, guid: 97b3abbc952fd5340927999de40b86bf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

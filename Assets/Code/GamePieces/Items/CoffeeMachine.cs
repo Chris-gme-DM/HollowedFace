@@ -1,10 +1,8 @@
-using UnityEngine;
-
 public class CoffeeMachine : BaseInteractable
 {
   public override void OnObjectInteraction()
   {
-    SatelliteDish.RequestEnergyAdjustment.Invoke(10);
-    
+    Mug mug = FindFirstObjectByType<Mug>();
+    mug.canInteract = true;
   }
 }

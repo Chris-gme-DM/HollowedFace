@@ -1,9 +1,59 @@
 fileFormatVersion: 2
-guid: eaea02ad52741c349b0d524b4388f678
+guid: e590d7cde03ebae4d96f2e459ec7e229
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blende_Kasse
+    second: {fileID: 2100000, guid: 12ffa83d0bf5637478a463c7f6ab966d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boden
+    second: {fileID: 2100000, guid: 02f1078458b1eb2409c88c1bf9afbb08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buttons
+    second: {fileID: 2100000, guid: 1276c8d899769a14f89e62b05c8f5d36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Decke
+    second: {fileID: 2100000, guid: ae20245be66b72745a61b7a52f960afd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Holz
+    second: {fileID: 2100000, guid: 43c676a33e26e424381fb8e4eed15779, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kuehlschrank
+    second: {fileID: 2100000, guid: 289d9d733d3b35e42903fa3ae94e95d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Licht
+    second: {fileID: 2100000, guid: 93a30205a2c822546a95a21e94014c51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 7a75e8197cf16314bb91eed17a5ef2e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metall
+    second: {fileID: 2100000, guid: c873957247d35254398448cc523edbdb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scanner
+    second: {fileID: 2100000, guid: b25f53ebc7435e34ab62cd366a4d619c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,7 +85,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1

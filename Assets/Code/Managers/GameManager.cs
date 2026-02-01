@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
     }
   private void Count(InteractableData data)
   {
-    if(data.Type != InteractionType.Item) return;
+    if(data.Type != InteractionType.Item || data.Type != InteractionType.Action) return;
     _currentLevelData.Counter++;
     if(_currentLevelData.Counter >= _currentLevelData.CountRequired) _currentLevelData.IsCompleted = true;
   }
