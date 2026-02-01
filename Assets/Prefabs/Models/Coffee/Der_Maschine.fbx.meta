@@ -1,9 +1,39 @@
 fileFormatVersion: 2
-guid: 72f6af0c6470aa6409d3cbdaca358f20
+guid: eee017813f3ed6f47adfe28223d67263
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buttons
+    second: {fileID: 2100000, guid: 1ebd8e727ff5ebd40a070223b0cc6d96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kaffemaschine_1
+    second: {fileID: 2100000, guid: 20811af1d2c840445890070477e0e3eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kaffemaschine_2
+    second: {fileID: 2100000, guid: 75fbf40f910989c4ca313aba0531f3fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kaffemaschine_3
+    second: {fileID: 2100000, guid: b2a20a73f14d8be4eb8b3b68e5ca9106, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kuechenschrank_1
+    second: {fileID: 2100000, guid: f35ac2df7774cf448ad5dc612d055e61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kuechenschrank_2
+    second: {fileID: 2100000, guid: a7b5642126ad28c4e8d842350d8b9d27, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

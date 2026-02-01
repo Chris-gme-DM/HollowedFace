@@ -1,9 +1,9 @@
-using UnityEngine;
-
 public class Mug : BaseInteractable
 {
+  public bool canInteract = false;
   public override void OnObjectInteraction()
   {
-    throw new System.NotImplementedException();
+    if(canInteract) SatelliteDish.RequestEnergyAdjustment.Invoke(10);
+    canInteract = false;
   }
 }

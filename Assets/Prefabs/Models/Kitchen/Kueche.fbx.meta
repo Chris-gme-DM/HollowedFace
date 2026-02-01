@@ -3,7 +3,67 @@ guid: c8e7854c92bb1c54f9f58df00d025bac
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buttons
+    second: {fileID: 2100000, guid: 59fc5796bbc8cd94a8fc01af4b6a797f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Herd
+    second: {fileID: 2100000, guid: b69bd9fccc87e8c40971104c58fc7feb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kaffee
+    second: {fileID: 2100000, guid: 2807c9160e66edf448a5fc346fc896f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kaffeemaschine
+    second: {fileID: 2100000, guid: ed79d5cb74c788b488e7ae9b98edd5d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kueche_Boden
+    second: {fileID: 2100000, guid: 1172c4b14604fd344a71738b033ee8fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kueche_Licht
+    second: {fileID: 2100000, guid: 2c00c52442e7dee46a9f175558ae94dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kueche_Wand
+    second: {fileID: 2100000, guid: e480bd2f0ceedf544b91edec6fb942ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kuechenschrank_1
+    second: {fileID: 2100000, guid: 2f97789628dede4408873aa7510ba0bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kuechenschrank_2
+    second: {fileID: 2100000, guid: 88dd3f9fcebe9314ca6c713490391ad8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kuehlschrank
+    second: {fileID: 2100000, guid: 5bdc76506eba85147abd02e7d1ac1d80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Muelleimer
+    second: {fileID: 2100000, guid: 2e811416fe92e524ba12be73c084e9a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ofen
+    second: {fileID: 2100000, guid: b232bfa20af3bc3449dff14f7ed65c33, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,7 +95,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1

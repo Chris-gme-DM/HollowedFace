@@ -3,7 +3,72 @@ guid: 58ee7edf84bd6974b94a882b2f3b8a70
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bett_Decke
+    second: {fileID: 2100000, guid: d48c41b4a482cf84cbaf641db917dda1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bett_Gestell
+    second: {fileID: 2100000, guid: 73a1a000dacc6fd4b87e77be82070c95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bett_Kissen
+    second: {fileID: 2100000, guid: 217ae353f4c4a5b4581a41723d8b5bbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bett_Matratze
+    second: {fileID: 2100000, guid: e720ff91761cb9b499206d41f78b4130, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buch_1
+    second: {fileID: 2100000, guid: c49a20317ad65a64a9d5500e46335667, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buch_2
+    second: {fileID: 2100000, guid: 4122c2811e56b1740aacb2bde37197f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buch_3
+    second: {fileID: 2100000, guid: 2817ba1eabb90044f8403f3991f08b3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gardienenstange
+    second: {fileID: 2100000, guid: 7a1fb27f9096df04999904aec6ea872d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Schlafzimmer_Boden
+    second: {fileID: 2100000, guid: 54c7d07822569c842aa631e34d5d63a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Schlafzimmer_Decke
+    second: {fileID: 2100000, guid: 95c184f782cec2a4ba85876cd510cdc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Schlafzimmer_Licht
+    second: {fileID: 2100000, guid: 6d092d043803ed04ebc62727c5322c02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Schlafzimmer_Vorleger
+    second: {fileID: 2100000, guid: 5291be13ac1365a48adc3b491ef43d83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vorhang
+    second: {fileID: 2100000, guid: 27e74621d658dfd4086b6927f2009c7f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,7 +100,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
