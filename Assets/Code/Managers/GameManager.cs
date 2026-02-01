@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
   private int _currentEnergy;
   private int _level;
   private InputSystem_Actions _input;
+  private MaskSetting _currentMask;
   void Awake()
   {
     if ( _instance != null)
@@ -26,8 +27,18 @@ public class GameManager : MonoBehaviour
   }
   private void Start()
   {
+    ResetGame();
     SetGameState(GameStatus.Paused);
     TogglePause();
+    SatelliteDish.MaskChange.AddListener(HandleMaskChange);
+    SatelliteDish.RequestEnergyAdjustment.AddListener(AdjustEnergy);
+    SatelliteDish.SceneStatusChange.AddListener(HandleSceneChange);
+  }
+  private void OnDisable()
+  {
+    SatelliteDish.MaskChange.RemoveListener(HandleMaskChange);
+    SatelliteDish.RequestEnergyAdjustment.RemoveListener(AdjustEnergy);
+    SatelliteDish.SceneStatusChange.RemoveListener(HandleSceneChange);
   }
   void Update()
     {
@@ -37,6 +48,7 @@ public class GameManager : MonoBehaviour
             if ( _timer >= _secondsForTimePass)
             {
                 _timer = 0;
+                AdjustEnergy(-_currentMask.energyDrain);
                 SatelliteDish.TimePass.Invoke(_currentInGameTime);
             }
         }
@@ -56,7 +68,9 @@ public class GameManager : MonoBehaviour
     private void ResetGame()
     {
         _level = 1;
-        AdjustEnergy(100);
+        _currentInGameTime = 480;
+        SatelliteDish.TimePass.Invoke(_currentInGameTime);
+        AdjustEnergy(80);
         ChangeScene(1);
     }
     private void ChangeScene(int index)
@@ -65,6 +79,13 @@ public class GameManager : MonoBehaviour
         if (sceneIndex == _level) return;
         SceneManager.LoadScene(index);
         SatelliteDish.SceneStatusChange.Invoke(SceneStatus.Invalid, SceneStatus.Loading);
+    }
+    private void HandleSceneChange(SceneStatus prev, SceneStatus next)
+    {
+        if(prev == next) return;
+        if(next == SceneStatus.Invalid) SetGameState(GameStatus.Paused);
+        if(next == SceneStatus.Loading) SetGameState(GameStatus.Paused);
+        if(next == SceneStatus.Running) SetGameState(GameStatus.Gameplay);
     }
     public void TogglePause()
     { 
@@ -81,10 +102,11 @@ public class GameManager : MonoBehaviour
         GameStatus newStatus = (Time.timeScale == 0) ? GameStatus.Paused : GameStatus.Gameplay;
         SetGameState(newStatus);
     }
-    public void AdjustEnergy(int amount)
+    private void AdjustEnergy(int amount)
     {
         _currentEnergy = Mathf.Clamp(_currentEnergy + amount , 0 , 100);
         SatelliteDish.EnergyEffect.Invoke(_currentEnergy);
+        Debug.Log($"{_currentEnergy}");
         if (_currentEnergy <= 0)
         {
             ChangeScene(_gameOverScene.buildIndex);
@@ -92,4 +114,5 @@ public class GameManager : MonoBehaviour
             TogglePause();
         }
     }
+    private void HandleMaskChange(MaskSetting mask) => _currentMask = mask;
 }

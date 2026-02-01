@@ -29,17 +29,18 @@ public class UIManager : MonoBehaviour
     if ( _instance != null && _instance != this )
     {
 			if( _instance != this) Destroy(this);
-			_instance = this;
+			if(_instance == null) _instance = this;
 			DontDestroyOnLoad(this);
     }
   }
   #region Subscriptions
-  private void OnEnable()
+  private void Start()
   {
     SatelliteDish.GameStatusChange.AddListener(HandleStatusChange);
     SatelliteDish.SceneStatusChange.AddListener(HandleSceneStatusChange);
     SatelliteDish.Interaction.AddListener(HandleInteraction);
 		SatelliteDish.PointerMoved.AddListener(HandlePointerMove);
+    
   }
   private void OnDisable()
   {
@@ -86,16 +87,26 @@ public class UIManager : MonoBehaviour
     /// watch this Method for changes in interaction system
     /// </summary>
   private void HandleInteraction(InteractableData data)
-    {
-			nameDisplay.text = data.Name;
-			if(data.Type != InteractionType.Dialogue) return;
-			// if the interaction validates showing the Dialogue
-			dialogueText.text = data.Dialogue;
-			SetUIStatus(PanelType.Dialogue);
-    }
+	{
+		if (data.Type == InteractionType.None || string.IsNullOrEmpty(data.Name))
+		{
+			nameDisplay.text = "";
+			SetUIStatus(PanelType.HUD); 
+			return;
+		}
+		nameDisplay.text = data.Name;
+		if (string.IsNullOrEmpty(data.Dialogue) || data.Dialogue.Length <= 1)
+		{
+			SetUIStatus(PanelType.HUD); 
+			return;
+		}
+
+		dialogueText.text = data.Dialogue;
+		SetUIStatus(PanelType.Dialogue, PanelType.HUD);    
+	}
 	private void HandlePointerMove(Vector2 pointer)
 	{
-	  if(nameDisplay.gameObject.activeSelf) nameDisplay.transform.position = pointer + nameTagOffset;
+	  if(nameDisplay.gameObject.activeSelf) nameDisplay.gameObject.transform.position = pointer + nameTagOffset;
 		else nameDisplay.gameObject.SetActive(false);
 	}
 		#endregion

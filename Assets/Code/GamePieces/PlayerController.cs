@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 _targetPosition;
     private bool _isWalking;
     private Coroutine _interactionCoroutine;
+    private Animator _animator;
+    private Quaternion _baseRotation = Quaternion.Euler(0, -90f, 0);
+    private int _interactionLayer => LayerMask.GetMask("Interactable");
     #endregion
     #region Initialization
     private void Awake()
@@ -37,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
         _walkableLayer = LayerMask.GetMask("Walkable");
         _targetPosition = transform.position;
+        _animator = GetComponentInChildren<Animator>();
     }
     private void OnEnable()
     {
@@ -48,13 +52,30 @@ public class PlayerController : MonoBehaviour
     }
   private void Update()
   {
-    if (!_isWalking) return;
+    if (!_isWalking)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, _baseRotation, Time.deltaTime * 10f);
+        return;
+    }
     transform.position = Vector3.MoveTowards(
         transform.position,
         _targetPosition,
         walkSpeed * Time.deltaTime
     );
-    if (Vector3.Distance(transform.position, _targetPosition) < 0.01f) _isWalking = false;
+    if (Vector3.Distance(transform.position, _targetPosition) < 0.01f)
+    {
+        _isWalking = false;
+        _animator.SetBool("isWalking", false);
+    } 
+    else _animator.SetBool("isWalking", true);
+    // Rotation
+    Vector3 direction = (_targetPosition - transform.position).normalized;
+    if (direction != Vector3.zero)
+    {
+        direction.y = 0; 
+        Quaternion targetRotation = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -90, 0);    // Offset for reasons
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+    }
   }
   #endregion
   #region Helpers
@@ -65,8 +86,7 @@ public class PlayerController : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(intersectionPoint, 2f, _walkableLayer);
         if( colliders.Length > 0)
         {
-            Vector3 rawPos = colliders[0].ClosestPoint(intersectionPoint);
-            _targetPosition = new(rawPos.x, rawPos.y + 1f, rawPos.z);
+            _targetPosition =  colliders[0].ClosestPoint(intersectionPoint);
             _isWalking = true;
         }
     }
@@ -92,13 +112,12 @@ public class PlayerController : MonoBehaviour
         _currentRay = ray;
         RaycastHit hit;
         // lies den value des mauszeigers aus
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _interactionLayer))
         {
             BaseInteractable objectHit = hit.collider.GetComponent<BaseInteractable>();
             _interactable = objectHit;
-            Debug.Log($"{objectHit}");
         } else _interactable = null;
-
+        Debug.Log($"Targeting: {(_interactable != null ? _interactable.name : "None")}");
     }
     private void OnMove(InputAction.CallbackContext ctx)
     {
@@ -111,7 +130,6 @@ public class PlayerController : MonoBehaviour
         if(scrollValue > 0) _currentMaskIndex = (_currentMaskIndex +1) % maskSettings.Count;
         else if(scrollValue < 0) _currentMaskIndex = (_currentMaskIndex - 1 + maskSettings.Count) % maskSettings.Count;
         MaskSetting activeMask = maskSettings[_currentMaskIndex];
-        Debug.Log($"Mask changed to {activeMask.type}");
         // Update HeadRotation
         SatelliteDish.MaskChange.Invoke(activeMask);
     }

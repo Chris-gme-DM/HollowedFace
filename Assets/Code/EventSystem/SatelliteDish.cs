@@ -57,6 +57,7 @@ public class SatelliteDish : MonoBehaviour
   public static UnityEvent<MaskSetting> MaskChange => _instance.gameContextEvents.maskChange;
   public static UnityEvent<int> TimePass => _instance.gameContextEvents.timePassed;
   public static UnityEvent<Vector2> PointerMoved => _instance.gameContextEvents.pointerMoved;
+  public static UnityEvent<int> RequestEnergyAdjustment => _instance.gameContextEvents.requestEnergyAdjustment;
 #endregion
 #region MonoBehavior
 private void Awake()
@@ -87,6 +88,7 @@ private class GameContextEvents
     [SerializeField] public UnityEvent<int> timePassed = new() ;
     [SerializeField] public UnityEvent<MaskSetting> maskChange = new() ;
     [SerializeField] public UnityEvent<Vector2> pointerMoved = new();
+    [SerializeField] public UnityEvent<int> requestEnergyAdjustment = new();
   }
 
 [Serializable]
