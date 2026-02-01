@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     #region UnityEditor
     [SerializeField] private List<MaskSetting> maskSettings;
     [SerializeField] private float walkSpeed = 5f;      //Base MS
+    [SerializeField] private GameObject _maskHead;
     #endregion
     #region Setup
     private int _currentMaskIndex;
