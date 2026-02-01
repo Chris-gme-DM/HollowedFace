@@ -176,6 +176,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2b3aa45f03e84f47a399967c35e379d, type: 3}
+--- !u!1 &411807017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3734890827641099530, guid: e590d7cde03ebae4d96f2e459ec7e229, type: 3}
+  m_PrefabInstance: {fileID: 686232425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &411807018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411807017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a2dcfe441224f4fbd427f03e66a21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UselessItem
+  objectName: Fridge
+  requiredMask: 2
+  interactionType: 2
+  dialogueText: So much , whatever this furry stuff is...
 --- !u!1001 &504522351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -365,9 +386,15 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1190816758}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1239670616872854185, guid: e590d7cde03ebae4d96f2e459ec7e229, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 686232430}
     - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: e590d7cde03ebae4d96f2e459ec7e229, type: 3}
       insertIndex: -1
       addedObject: {fileID: 686232428}
+    - targetCorrespondingSourceObject: {fileID: -3734890827641099530, guid: e590d7cde03ebae4d96f2e459ec7e229, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 411807018}
   m_SourcePrefab: {fileID: 100100000, guid: e590d7cde03ebae4d96f2e459ec7e229, type: 3}
 --- !u!4 &686232426 stripped
 Transform:
@@ -394,7 +421,28 @@ MonoBehaviour:
   objectName: GoodDoor
   requiredMask: 2
   interactionType: 1
-  dialogueText: I hate people
+  dialogueText: I hate people. Yeah freedom
+--- !u!1 &686232429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1239670616872854185, guid: e590d7cde03ebae4d96f2e459ec7e229, type: 3}
+  m_PrefabInstance: {fileID: 686232425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &686232430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686232429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e7cb0d3c34c9d4e8f60bf6c6bd7c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Actionable
+  objectName: Counter
+  requiredMask: 4
+  interactionType: 1
+  dialogueText: Huh... good enough for us , I guess
 --- !u!1001 &701172912
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 534477724918855830}
   - component: {fileID: 4493991112011282964}
+  - component: {fileID: 1462485432045391073}
   m_Layer: 6
   m_Name: BadDoor
   m_TagString: Untagged
@@ -49,6 +50,27 @@ MonoBehaviour:
   requiredMask: 2
   interactionType: 2
   dialogueText: So this is what nonsense looks like
+--- !u!65 &1462485432045391073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9110451963401704857}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2, y: 1.8, z: 0.3}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1001 &1368087657364201484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59,15 +81,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: eaea02ad52741c349b0d524b4388f678, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.05044
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eaea02ad52741c349b0d524b4388f678, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.24938
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eaea02ad52741c349b0d524b4388f678, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.24919
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eaea02ad52741c349b0d524b4388f678, type: 3}
       propertyPath: m_LocalRotation.w

@@ -20,7 +20,10 @@ public class HUD : MonoBehaviour
     SatelliteDish.EnergyEffect.RemoveListener(HandleEnergyEffect);
     SatelliteDish.MaskChange.RemoveListener(HandleMaskChange);
   }
-
+void Update()
+  {
+    _energyBar.fillAmount = GameManager._instance.CurrentEnergy;
+  }
   private void HandleMaskChange(MaskSetting mask)
   {
     _maskImage.sprite = mask.sprite;

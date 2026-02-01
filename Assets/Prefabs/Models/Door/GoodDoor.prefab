@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5744717432264089253}
   - component: {fileID: 6919524069421950386}
+  - component: {fileID: 7584434744646037490}
   m_Layer: 6
   m_Name: GoodDoor
   m_TagString: Untagged
@@ -49,6 +50,27 @@ MonoBehaviour:
   requiredMask: 3
   interactionType: 1
   dialogueText: This is the right way to go, wrong was for my mood
+--- !u!65 &7584434744646037490
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615436359389484405}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2, y: 1.8, z: 0.3}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1001 &2837810355998317851
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -140,9 +140,9 @@ public class PlayerController : MonoBehaviour
         float targetY = 0;
         switch (activeMask.type)
         {
-            case MaskType.Happy: targetY = 90f; break;
-            case MaskType.Angry: targetY = 180f; break;
-            case MaskType.Sad: targetY = 270f; break;
+            case MaskType.Happy: targetY = 180f; break;
+            case MaskType.Angry: targetY = 270f; break;
+            case MaskType.Sad: targetY = 90f; break;
             case MaskType.Indifferent: targetY = 0f; break; 
             default: targetY = 0f; break;
         }

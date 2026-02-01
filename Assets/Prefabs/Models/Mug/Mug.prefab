@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2056592891761765004}
   - component: {fileID: 2037704955320973036}
+  - component: {fileID: -6791306406752324164}
   m_Layer: 6
   m_Name: Mug
   m_TagString: Untagged
@@ -50,6 +51,27 @@ MonoBehaviour:
   interactionType: 3
   dialogueText: Good stuff
   canInteract: 0
+--- !u!65 &-6791306406752324164
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933691266468194448}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11, y: 0.3, z: 0.11}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1001 &3893784927488230609
 PrefabInstance:
   m_ObjectHideFlags: 0

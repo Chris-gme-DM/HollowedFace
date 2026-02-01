@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2850241224057511451}
   - component: {fileID: 2804885167892304005}
+  - component: {fileID: -5379800373939425426}
   m_Layer: 6
   m_Name: CoffeeMachine
   m_TagString: Untagged
@@ -50,6 +51,27 @@ MonoBehaviour:
   interactionType: 1
   dialogueText: "This is the stuff we need, and this is der Ger\xE4t daf\xFCr. \nDer
     Ger\xE4t schl\xE4ft nicht. So wie du."
+--- !u!65 &-5379800373939425426
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688315756406344361}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.93, z: 1}
+  m_Center: {x: 4.5, y: 0.36, z: 0}
 --- !u!1001 &9184570857880799834
 PrefabInstance:
   m_ObjectHideFlags: 0

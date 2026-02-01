@@ -190,7 +190,7 @@ Transform:
   m_GameObject: {fileID: 242017950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.58, z: 2.04}
+  m_LocalPosition: {x: 0, y: 1.58, z: 2.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -324,6 +324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5540796619609771313, guid: e572b759143457b41bbd0c35a075107d, type: 3}
+      propertyPath: _secondsForTimePass
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5661829892761670415, guid: e572b759143457b41bbd0c35a075107d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 671.7399
@@ -382,6 +386,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 136597190383777371, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.17
+      objectReference: {fileID: 0}
     - target: {fileID: 1891060282229565207, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -421,6 +429,58 @@ PrefabInstance:
     - target: {fileID: 1891060282229565207, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[1].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[2].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[3].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5a7994ee5f8c71544a39b4ed0d006dc7, type: 3}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a635c3cdf6c29cd4baa0e539ca27b3ab, type: 3}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6693b46f3ca59d42920d159cf307c0d, type: 3}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5fca4345bdc961049a81a4053ce321a0, type: 3}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[0].energyDrain
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[1].energyDrain
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[2].energyDrain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3221406041698426872, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
+      propertyPath: maskSettings.Array.data[3].energyDrain
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3505460001518783150, guid: 3b57c069ac4573743a0323dc084cb048, type: 3}
       propertyPath: m_Name
@@ -705,7 +765,7 @@ Transform:
   m_GameObject: {fileID: 2139296419}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.58, z: 2.04}
+  m_LocalPosition: {x: 0, y: 1.58, z: 2.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

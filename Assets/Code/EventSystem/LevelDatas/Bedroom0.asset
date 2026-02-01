@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bedroom0
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   LevelIndex: 1
-  RequiredItems: 3
+  RequiredItems: 0
   LevelDescription: Get UP, get dressed
   TimeToStart: 480
   TimeBeforeEnd: 495

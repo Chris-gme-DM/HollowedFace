@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-  private static GameManager _instance;
+  public static GameManager _instance;
   public GameStatus CurrentStatus {get; private set;}
   public List<LevelData> Levels;
   private LevelData _currentLevelData;
@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
   [SerializeField] private float _secondsForTimePass;
   private float _timer;
   private int _currentEnergy;
+  public int CurrentEnergy => _currentEnergy;
   private InputSystem_Actions _input;
   private MaskSetting _currentMask;
+  public int CurrentInGameTime => _currentInGameTime;
   void Awake()
   {
     if (_instance != null && _instance != this)
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
     private void ResetGame()
     {
         _currentLevelData = Levels[1];
-        _currentInGameTime = 480;
+        _currentInGameTime = _currentLevelData.TimeToStart;
         SatelliteDish.TimePass.Invoke(_currentInGameTime);
         AdjustEnergy(80);
         ChangeScene(1);
@@ -140,6 +142,7 @@ public class GameManager : MonoBehaviour
             _currentLevelData.Counter = 0;
             int sceneIndex = SceneManager.GetActiveScene().buildIndex;
             ChangeScene(sceneIndex+1);
+            _currentLevelData = Levels[sceneIndex + 1];
         }
     }
     private void HandleMaskChange(MaskSetting mask) => _currentMask = mask;
