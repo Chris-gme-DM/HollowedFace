@@ -20,12 +20,15 @@ public class SatelliteDish : MonoBehaviour
 {
 #region Singleton
   private static SatelliteDish _instance ;
+
+  public GameStatus CurrentGameStatus {get; private set;}
 #endregion
 
 
 #region Unity Editor
   [SerializeField] private EventSystemConfig config ;
   [SerializeField] private SceneContextEvents sceneContextEvents ;
+  [SerializeField] private GameContextEvents gameContextEvents;
 #endregion
 
 
@@ -47,7 +50,15 @@ public class SatelliteDish : MonoBehaviour
   public static UnityEvent<SceneStatus,SceneStatus> SceneStatusChange => _instance.sceneContextEvents.sceneStatusChange ;
 #endregion
 
-
+#region Invokables: GameEvents
+  public static UnityEvent<GameStatus> GameStatusChange => _instance.gameContextEvents.gameStatusChange ;
+  public static UnityEvent<InteractableData> Interaction => _instance.gameContextEvents.interaction;
+  public static UnityEvent<int> EnergyEffect => _instance.gameContextEvents.energyEffect;
+  public static UnityEvent<MaskSetting> MaskChange => _instance.gameContextEvents.maskChange;
+  public static UnityEvent<int> TimePass => _instance.gameContextEvents.timePassed;
+  public static UnityEvent<Vector2> PointerMoved => _instance.gameContextEvents.pointerMoved;
+  public static UnityEvent<int> RequestEnergyAdjustment => _instance.gameContextEvents.requestEnergyAdjustment;
+#endregion
 #region MonoBehavior
 private void Awake()
 {
@@ -56,7 +67,7 @@ private void Awake()
   if( _instance != null )
     throw new Exception("Program attempted to create an instance of SatelliteDish, but one already existed.") ;
   
-  _instance = this ;
+  if(_instance == null) _instance = this;
 
   DontDestroyOnLoad( this ) ;
 }
@@ -68,10 +79,22 @@ private void Awake()
 private class SceneContextEvents {
 [SerializeField] public UnityEvent<SceneStatus,SceneStatus> sceneStatusChange ;
 }
+[Serializable]
+private class GameContextEvents
+  {
+    [SerializeField] public UnityEvent<GameStatus> gameStatusChange = new() ;
+    [SerializeField] public UnityEvent<InteractableData> interaction = new() ;
+    [SerializeField] public UnityEvent<int> energyEffect = new() ;
+    [SerializeField] public UnityEvent<int> timePassed = new() ;
+    [SerializeField] public UnityEvent<MaskSetting> maskChange = new() ;
+    [SerializeField] public UnityEvent<Vector2> pointerMoved = new();
+    [SerializeField] public UnityEvent<int> requestEnergyAdjustment = new();
+  }
 
 [Serializable]
 private class EventSystemConfig {
 [SerializeField] public string helloWorld = "hello world" ;
 }
-#endregion
+
 }
+#endregion
